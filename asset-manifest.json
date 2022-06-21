@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.31d35902.css",
-    "main.js": "/static/js/main.f362cd0d.js",
-    "static/js/787.f68af6a1.chunk.js": "/static/js/787.f68af6a1.chunk.js",
-    "index.html": "/index.html",
-    "main.31d35902.css.map": "/static/css/main.31d35902.css.map",
-    "main.f362cd0d.js.map": "/static/js/main.f362cd0d.js.map",
-    "787.f68af6a1.chunk.js.map": "/static/js/787.f68af6a1.chunk.js.map"
+    "main.css": "/comfort-react-demo/static/css/main.31d35902.css",
+    "main.js": "/comfort-react-demo/static/js/main.2df7d4af.js",
+    "static/js/787.f68af6a1.chunk.js": "/comfort-react-demo/static/js/787.f68af6a1.chunk.js",
+    "index.html": "/comfort-react-demo/index.html",
+    "main.31d35902.css.map": "/comfort-react-demo/static/css/main.31d35902.css.map",
+    "main.2df7d4af.js.map": "/comfort-react-demo/static/js/main.2df7d4af.js.map",
+    "787.f68af6a1.chunk.js.map": "/comfort-react-demo/static/js/787.f68af6a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d35902.css",
-    "static/js/main.f362cd0d.js"
+    "static/js/main.2df7d4af.js"
   ]
 }
