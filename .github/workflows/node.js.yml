@@ -27,8 +27,7 @@ jobs:
     - name: Install dependencies
       run: rm -rf node_modules && npm ci
     - run: npm run build
-    - run: npm run export
-    - run: touch ./out/.nojekyll
+    - run: touch ./build/.nojekyll
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
