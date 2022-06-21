@@ -2,6 +2,7 @@
   "name": "comfort-react-demo",
   "version": "1.0.1",
   "private": false,
+  "homepage": "http://obss.github.io/comfort-react-demo",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.15.5",
@@ -49,7 +50,7 @@
     "web-vitals": "1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "SET PUBLIC_URL=. && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
