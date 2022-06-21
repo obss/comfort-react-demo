@@ -101,7 +101,7 @@ const ComponentFileInput = () => {
     currentJsx = "import { FileInput } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper>
+        <ExampleUsageWrapper header="FileInput" codeUrl={'components/components/ComponentFileInput.js'}>
             {fileInputElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

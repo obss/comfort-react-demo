@@ -10,7 +10,7 @@ import BodyWrapper from './BodyWrapper';
 import Routes from './Routes';
 import ExampleUsageWrapper from './ExampleUsageWrapper';
 import Settings from './Settings';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { HashRouter, Link } from 'react-router-dom';
 import MainDrawer from './MainDrawer';
 import { Autocomplete, ComfortReactProvider } from 'comfort-react';
 import RTL from './RTL';
@@ -317,7 +317,7 @@ const Main = () => {
 
     return (
         <RTL isRtl={document.dir === 'rtl'}>
-            <BrowserRouter>
+            <HashRouter>
                 <div className={'obssTriangle'}>
                     <a className={'triangleIcon'} href={'https://obss.com.tr/'} target={'_blank'} rel="noreferrer">
                         <img src={process.env.PUBLIC_URL + '/obss.png'} alt={'obss'} />
@@ -365,7 +365,7 @@ const Main = () => {
                         </div>
                     </BodyWrapper>
                 </ComfortReactProvider>
-            </BrowserRouter>
+            </HashRouter>
         </RTL>
     );
 };
