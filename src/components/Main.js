@@ -338,22 +338,22 @@ const Main = () => {
                     </AppBar>
                 </Box>
                 <MainDrawer anchor={anchor} open={anchor} toggleDrawer={toggleDrawer} />
-                <Dialog open={settingsDialogOpen} onClose={() => setSettingsDialogOpen(false)}>
-                    <DialogTitle>
-                        <ExampleUsageWrapper
-                            header="Edit ComfortReactProvider Props"
-                            codeUrl="components/Main.js"
-                            wrapperClassName="modalHeaderWrapper"
-                        />
-                    </DialogTitle>
-                    {dialogContent}
-                </Dialog>
                 <ComfortReactProvider
                     lang={currentSettings.lang}
                     reactValidatableFormProps={reactValidatableFormProps}
                     notistackProviderProps={notistackProviderProps}
                     useApiProps={useApiProps}
                 >
+                    <Dialog open={settingsDialogOpen} onClose={() => setSettingsDialogOpen(false)}>
+                        <DialogTitle>
+                            <ExampleUsageWrapper
+                                header="Edit ComfortReactProvider Props"
+                                codeUrl="components/Main.js"
+                                wrapperClassName="modalHeaderWrapper"
+                            />
+                        </DialogTitle>
+                        {dialogContent}
+                    </Dialog>
                     <BodyWrapper>
                         <div className="flex">
                             <Routes

@@ -93,6 +93,8 @@ const ComponentShrinkableTransferList = () => {
     const shrinkableTransferListSimpleElementJsx = (
         <ShrinkableTransferList
             label="ShrinkableTransferList simple multiple"
+            leftHeader="simple"
+            rightHeader="selected"
             placeholder={selectedPlaceholder ? PLACEHOLDER_TEXT : null}
             className={selectedEnableClassName ? 'exampleStyle' : ''}
             headerClassName={selectedCustomHeaderStyle ? 'exampleHeaderStyle' : ''}
@@ -123,6 +125,8 @@ const ComponentShrinkableTransferList = () => {
     const shrinkableTransferListComplexElementJsx = (
         <ShrinkableTransferList
             label="ShrinkableTransferList complex multiple"
+            leftHeader="complex"
+            rightHeader="selected"
             placeholder={selectedPlaceholder ? PLACEHOLDER_TEXT : null}
             className={selectedEnableClassName ? 'exampleStyle' : ''}
             headerClassName={selectedCustomHeaderStyle ? 'exampleHeaderStyle' : ''}
@@ -273,7 +277,7 @@ const ComponentShrinkableTransferList = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'sort alphabetically'}
+                            label={'sortAlphabetically'}
                             value={selectedSortAlphabetically}
                             onChange={(newValue) => {
                                 setSelectedSortAlphabetically(newValue);

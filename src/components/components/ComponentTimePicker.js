@@ -1,4 +1,4 @@
-import { Autocomplete, Checkbox, TextField, TimePicker, useSnackbar } from 'comfort-react';
+import { Autocomplete, Checkbox, TextField, TimePicker, useSnackbar, useValidatableForm } from 'comfort-react';
 import { Grid } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
 import ExampleUsageWrapper from '../ExampleUsageWrapper';
@@ -8,7 +8,6 @@ import CurrentRulesInfo from '../CurrentRulesInfo';
 import CurrentComponentApiInfo from '../CurrentComponentApiInfo';
 import { customErrorMessageRenderer } from './CustomErrorMessageRenderer';
 import { customErrorMessageJsx } from '../../constants/JsxConstants';
-import { useValidatableForm } from 'comfort-react';
 
 const VARIANT_OPTIONS = ['outlined', 'filled', 'standard'];
 const INPUT_STYLE = { color: 'red' };
@@ -48,7 +47,7 @@ const ComponentTimePicker = () => {
             value={!enableUseValidatableForm ? value : getValue('val')}
             onChange={!enableUseValidatableForm ? handleChange : null}
             onBlur={selectedBlur ? (!enableUseValidatableForm ? handleBlur : null) : null}
-            error={enableUseValidatableForm ? !!getError('val') : null}
+            errorMessage={enableUseValidatableForm ? getError('val') : errorMessage}
             setPathValue={enableUseValidatableForm ? setPathValue : null}
             setPathIsBlurred={enableUseValidatableForm ? setPathIsBlurred : null}
             variant={selectedVariant}
@@ -57,7 +56,6 @@ const ComponentTimePicker = () => {
             InputProps={{
                 style: selectedInputStyle ? INPUT_STYLE : null,
             }}
-            errorMessage={errorMessage}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
         />
     );
