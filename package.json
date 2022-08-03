@@ -1,6 +1,6 @@
 {
   "name": "comfort-react-demo",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": false,
   "homepage": "http://obss.github.io/comfort-react-demo",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "11.1.0",
     "@testing-library/user-event": "12.1.10",
-    "comfort-react": "1.5.1",
+    "comfort-react": "1.6.0",
     "date-fns": "2.29.1",
     "jsx-to-string": "1.4.0",
     "miragejs": "0.1.43",
