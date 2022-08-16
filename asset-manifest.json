@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/comfort-react-demo/static/css/main.31d35902.css",
-    "main.js": "/comfort-react-demo/static/js/main.840d3088.js",
+    "main.css": "/comfort-react-demo/static/css/main.8eaecc5b.css",
+    "main.js": "/comfort-react-demo/static/js/main.13f4e6df.js",
     "static/js/787.f68af6a1.chunk.js": "/comfort-react-demo/static/js/787.f68af6a1.chunk.js",
     "index.html": "/comfort-react-demo/index.html",
-    "main.31d35902.css.map": "/comfort-react-demo/static/css/main.31d35902.css.map",
-    "main.840d3088.js.map": "/comfort-react-demo/static/js/main.840d3088.js.map",
+    "main.8eaecc5b.css.map": "/comfort-react-demo/static/css/main.8eaecc5b.css.map",
+    "main.13f4e6df.js.map": "/comfort-react-demo/static/js/main.13f4e6df.js.map",
     "787.f68af6a1.chunk.js.map": "/comfort-react-demo/static/js/787.f68af6a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31d35902.css",
-    "static/js/main.840d3088.js"
+    "static/css/main.8eaecc5b.css",
+    "static/js/main.13f4e6df.js"
   ]
 }
