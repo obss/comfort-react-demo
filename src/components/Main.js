@@ -330,6 +330,12 @@ const Main = () => {
                                 <MenuIcon />
                             </IconButton>
                             <Link to={'/'} className="bannerLink">
+                                <img
+                                    width={48}
+                                    className={'menuLogo'}
+                                    src={process.env.PUBLIC_URL + '/logo.png'}
+                                    alt={'logo'}
+                                />
                                 <span className="bannerText">comfort-react</span>
                             </Link>
                             <Box flexGrow={1} />
