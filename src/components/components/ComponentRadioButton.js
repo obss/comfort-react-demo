@@ -1,4 +1,4 @@
-import { Autocomplete, Checkbox, RadioButton, TextField } from 'comfort-react';
+import { Autocomplete, Checkbox, RadioButton, TextField, useValidatableForm } from 'comfort-react';
 import { Grid } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
 import ExampleUsageWrapper from '../ExampleUsageWrapper';
@@ -11,7 +11,6 @@ import './ComponentRadioButton.css';
 import CurrentComponentApiInfo from '../CurrentComponentApiInfo';
 import { customErrorMessageRenderer } from './CustomErrorMessageRenderer';
 import { customErrorMessageJsx } from '../../constants/JsxConstants';
-import { useValidatableForm } from 'comfort-react';
 
 const RADIO_SIZE = ['medium', 'large', 'small'];
 const LABEL_PLACEMENT = ['end', 'bottom', 'start', 'top'];
@@ -43,6 +42,8 @@ const ComponentRadioButton = () => {
     const [errorMessage, setErrorMessage] = useState();
     const [selectedRenderErrorMessage, setSelectedRenderErrorMessage] = useState(false);
     const [enableUseValidatableForm, setEnableUseValidatableForm] = useState(false);
+    const [selectedGetOptionDisabled, setSelectedGetOptionDisabled] = useState(false);
+
     const { setPathValue, setPathIsBlurred, getValue, getError } = useValidatableForm({
         rules,
     });
@@ -54,6 +55,9 @@ const ComponentRadioButton = () => {
     const handleComplexSingleChange = (newValue) => {
         setComplexSingleValue(newValue);
     };
+
+    const simpleGetOptionDisabled = (option) => option === 'Antarctica';
+    const complexGetOptionDisabled = (option) => option.label === 'Antarctica';
 
     const radioButtonSimpleSingleElementJsx = (
         <RadioButton
@@ -78,6 +82,7 @@ const ComponentRadioButton = () => {
                 size: selectedRadioSize ? selectedRadioSize : 'medium',
             }}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
+            getOptionDisabled={selectedGetOptionDisabled ? simpleGetOptionDisabled : null}
         />
     );
 
@@ -116,6 +121,7 @@ const ComponentRadioButton = () => {
                 size: selectedRadioSize ? selectedRadioSize : 'medium',
             }}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
+            getOptionDisabled={selectedGetOptionDisabled ? complexGetOptionDisabled : null}
         />
     );
 
@@ -179,7 +185,7 @@ const ComponentRadioButton = () => {
                         onChange={(val) => {
                             setSelectedLabelOptions(val);
                         }}
-                        label={'label option'}
+                        label={'getOptionLabel'}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -275,6 +281,17 @@ const ComponentRadioButton = () => {
                             value={enableUseValidatableForm}
                             onChange={(newValue) => {
                                 setEnableUseValidatableForm(newValue);
+                            }}
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <Checkbox
+                            label={'getOptionDisabled'}
+                            value={selectedGetOptionDisabled}
+                            onChange={(newValue) => {
+                                setSelectedGetOptionDisabled(newValue);
                             }}
                         />
                     </FormGroup>
@@ -427,6 +444,12 @@ const RadioButtonApiInfo = [
     },
     {
         name: 'renderErrorMessage',
+        type: 'Func',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'getOptionDisabled',
         type: 'Func',
         defaultValue: '',
         description: '',

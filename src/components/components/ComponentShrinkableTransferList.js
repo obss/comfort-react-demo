@@ -1,3 +1,11 @@
+import {
+    Autocomplete,
+    Checkbox,
+    ShrinkableTransferList,
+    TextField,
+    useSnackbar,
+    useValidatableForm,
+} from 'comfort-react';
 import { useState } from 'react';
 import { complexOptions, options } from '../../constants/Data';
 import { customErrorMessageRenderer } from './CustomErrorMessageRenderer';
@@ -9,14 +17,6 @@ import FormGroup from '@mui/material/FormGroup';
 import CurrentRulesInfo from '../CurrentRulesInfo';
 import { pink } from '@mui/material/colors';
 import './ComponentTransferList.css';
-import {
-    Autocomplete,
-    Checkbox,
-    ShrinkableTransferList,
-    TextField,
-    useSnackbar,
-    useValidatableForm,
-} from 'comfort-react';
 
 const LABEL_OPTIONS = ['label', 'id', 'description'];
 const PLACEHOLDER_TEXT = 'placeholder';
@@ -62,6 +62,8 @@ const ComponentShrinkableTransferList = () => {
     const [selectedCustomPaperStyle, setSelectedCustomPaperStyle] = useState(false);
     const [selectedCustomButtonStyle, setSelectedCustomButtonStyle] = useState(false);
     const [enableUseValidatableForm, setEnableUseValidatableForm] = useState(false);
+    const [selectedGetOptionDisabled, setSelectedGetOptionDisabled] = useState(false);
+
     const { setPathValue, setPathIsBlurred, getValue, getError } = useValidatableForm({
         rules,
     });
@@ -89,6 +91,9 @@ const ComponentShrinkableTransferList = () => {
     if (selectedCheckboxSize) {
         checkboxProps.size = selectedCheckboxSize;
     }
+
+    const simpleGetOptionDisabled = (option) => option === 'Antarctica';
+    const complexGetOptionDisabled = (option) => option.label === 'Antarctica';
 
     const shrinkableTransferListSimpleElementJsx = (
         <ShrinkableTransferList
@@ -119,6 +124,7 @@ const ComponentShrinkableTransferList = () => {
             buttonStyleProps={selectedCustomButtonStyle ? CUSTOM_BUTTON_THEME : null}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
             mobileWidth={selectedMobileWidth}
+            getOptionDisabled={selectedGetOptionDisabled ? simpleGetOptionDisabled : null}
         />
     );
 
@@ -162,10 +168,11 @@ const ComponentShrinkableTransferList = () => {
             buttonStyleProps={selectedCustomButtonStyle ? CUSTOM_BUTTON_THEME : null}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
             mobileWidth={selectedMobileWidth}
+            getOptionDisabled={selectedGetOptionDisabled ? complexGetOptionDisabled : null}
         />
     );
 
-    const shrinElementJsx = (
+    const shrinkElementJsx = (
         <Grid container spacing={2} marginTop={2}>
             <Grid item xs={12} sm={6}>
                 {shrinkableTransferListSimpleElementJsx}
@@ -198,7 +205,7 @@ const ComponentShrinkableTransferList = () => {
             header="ShrinkableTransferList"
             codeUrl="components/components/ComponentShrinkableTransferList.js"
         >
-            {shrinElementJsx}
+            {shrinkElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>
                     <Autocomplete
@@ -207,7 +214,7 @@ const ComponentShrinkableTransferList = () => {
                         onChange={(val) => {
                             setSelectedLabelOptions(val);
                         }}
-                        label={'label option'}
+                        label={'getOptionLabel'}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -400,6 +407,17 @@ const ComponentShrinkableTransferList = () => {
                             value={enableUseValidatableForm}
                             onChange={(newValue) => {
                                 setEnableUseValidatableForm(newValue);
+                            }}
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <Checkbox
+                            label={'getOptionDisabled'}
+                            value={selectedGetOptionDisabled}
+                            onChange={(newValue) => {
+                                setSelectedGetOptionDisabled(newValue);
                             }}
                         />
                     </FormGroup>
