@@ -319,7 +319,7 @@ const Main = () => {
         <RTL isRtl={document.dir === 'rtl'}>
             <HashRouter>
                 <div className={'obssTriangle'}>
-                    <a className={'triangleIcon'} href={'https://obss.com.tr/'} target={'_blank'} rel="noreferrer">
+                    <a className={'triangleIcon'} href={'https://obss.tech/'} target={'_blank'} rel="noreferrer">
                         <img src={process.env.PUBLIC_URL + '/obss.png'} alt={'obss'} />
                     </a>
                 </div>
