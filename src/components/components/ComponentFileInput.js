@@ -3,11 +3,18 @@ import { useState } from 'react';
 import jsxToString from 'jsx-to-string';
 import CurrentRulesInfo from '../CurrentRulesInfo';
 import FormGroup from '@mui/material/FormGroup';
-import { Autocomplete, Checkbox, FileInput, NumberField, TextField, useSnackbar } from 'comfort-react';
+import {
+    Autocomplete,
+    Checkbox,
+    FileInput,
+    NumberField,
+    TextField,
+    useSnackbar,
+    useValidatableForm,
+} from 'comfort-react';
 import { Grid } from '@mui/material';
 import { FileDownload } from '@mui/icons-material';
 import { customErrorMessageRenderer } from './CustomErrorMessageRenderer';
-import { useValidatableForm } from 'comfort-react';
 
 const FILE_TYPE = ['all', 'images', 'videos'];
 
@@ -18,6 +25,8 @@ const ComponentFileInput = () => {
     const [selectedFileType, setSelectedFileType] = useState(FILE_TYPE[0]);
     const [selectedFullWidth, setSelectedFullWidth] = useState(false);
     const [selectedMaxFiles, setSelectedMaxFiles] = useState();
+    const [selectedMaxTotalFileSizeInBytes, setSelectedMaxTotalFileSizeInBytes] = useState();
+    const [selectedMaxFileSizeInBytes, setSelectedMaxFileSizeInBytes] = useState();
     const [selectedCustomDescription, setSelectedCustomDescription] = useState(false);
     const [selectedRemovePadding, setSelectedRemovePadding] = useState(false);
     const [selectedRenderErrorMessage, setSelectedRenderErrorMessage] = useState(false);
@@ -41,13 +50,27 @@ const ComponentFileInput = () => {
         setSelectedMaxFiles(newMaxFilex);
     };
 
+    const handleChangeSelectedMaxTotalFileSizeInBytes = (newMaxTotalFileSizeInBytes) => {
+        setValue(null);
+        setPathValue('val', null);
+        setSelectedMaxTotalFileSizeInBytes(newMaxTotalFileSizeInBytes);
+    };
+
+    const handleChangeSelectedMaxFileSizeInBytes = (newMaxFileSizeInBytes) => {
+        setValue(null);
+        setPathValue('val', null);
+        setSelectedMaxFileSizeInBytes(newMaxFileSizeInBytes);
+    };
+
     const handleBlur = () => {
         enqueueSnackbar('FileInput is blurred', { variant: 'info' });
     };
 
     const handleOnChange = (newValue) => {
         const fLength = Array.isArray(newValue) ? newValue.length : newValue ? 1 : 0;
-        enqueueSnackbar(`${fLength} files currently added`, { variant: 'info' });
+        if (fLength > 0) {
+            enqueueSnackbar(`${fLength} files currently added`, { variant: 'info' });
+        }
         setValue(newValue);
     };
 
@@ -65,6 +88,8 @@ const ComponentFileInput = () => {
             fullWidth={selectedFullWidth}
             height={selectedHeight ? `${selectedHeight}px` : undefined}
             width={selectedWidth ? `${selectedWidth}px` : undefined}
+            maxTotalFileSizeInBytes={selectedMaxTotalFileSizeInBytes}
+            maxFileSizeInBytes={selectedMaxFileSizeInBytes}
             maxFiles={selectedMaxFiles}
             hidePreviewArea={selectedHidePreviewArea}
             description={
@@ -101,7 +126,7 @@ const ComponentFileInput = () => {
     currentJsx = "import { FileInput } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="FileInput" codeUrl={'components/components/ComponentFileInput.js'}>
+        <ExampleUsageWrapper>
             {fileInputElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>
@@ -151,6 +176,28 @@ const ComponentFileInput = () => {
                                 handleChangeSelectedMaxFiles(val);
                             }}
                             label="maxFiles"
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <NumberField
+                            value={selectedMaxTotalFileSizeInBytes}
+                            onChange={(val) => {
+                                handleChangeSelectedMaxTotalFileSizeInBytes(val);
+                            }}
+                            label="maxTotalFileSizeInBytes"
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <NumberField
+                            value={selectedMaxFileSizeInBytes}
+                            onChange={(val) => {
+                                handleChangeSelectedMaxFileSizeInBytes(val);
+                            }}
+                            label="maxFileSizeInBytes"
                         />
                     </FormGroup>
                 </Grid>
