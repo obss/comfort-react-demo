@@ -34,7 +34,6 @@ import UseApiApi from './use-api/UseApiApi';
 import Usage from './getting-started/Usage';
 import ComponentConfirmDialog from './components/ComponentConfirmDialog';
 import ComponentFormDialog from './components/ComponentFormDialog';
-import ValidatableFormUsage from './validatable-form/ValidatableFormUsage';
 import ApiComfortReactProvider from './api/ApiComfortReactProvider';
 import ComponentFileInput from './components/ComponentFileInput';
 import ComponentSwitch from './components/ComponentSwitch';
@@ -113,9 +112,6 @@ const Routes = (props) => {
                     </Route>
                     <Route exact path="/components/form-dialog">
                         <ComponentFormDialog />
-                    </Route>
-                    <Route exact path="/validatable-form/usage">
-                        <ValidatableFormUsage openSettingsDialog={props.openSettingsDialog} />
                     </Route>
                     <Route exact path="/validatable-form/tckn">
                         <RuleTckn />
