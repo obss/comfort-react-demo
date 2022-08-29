@@ -120,7 +120,7 @@ const ComponentShrinkableTransferList = () => {
             sortAlphabetically={selectedSortAlphabetically}
             onClose={selectedOnCloseEvent ? handleOnClose : null}
             loading={selectedLoading}
-            checkBoxProps={checkboxProps}
+            checkboxProps={checkboxProps}
             buttonStyleProps={selectedCustomButtonStyle ? CUSTOM_BUTTON_THEME : null}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
             mobileWidth={selectedMobileWidth}
@@ -164,7 +164,7 @@ const ComponentShrinkableTransferList = () => {
             sortAlphabetically={selectedSortAlphabetically}
             onClose={selectedOnCloseEvent ? handleOnClose : null}
             loading={selectedLoading}
-            checkBoxProps={checkboxProps}
+            checkboxProps={checkboxProps}
             buttonStyleProps={selectedCustomButtonStyle ? CUSTOM_BUTTON_THEME : null}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
             mobileWidth={selectedMobileWidth}
