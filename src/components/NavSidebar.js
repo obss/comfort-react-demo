@@ -68,6 +68,11 @@ const allMenuItems = [
                 keywords: ['checkbox'],
             },
             {
+                title: 'CheckList',
+                itemId: '/components/check-list',
+                keywords: ['checklist'],
+            },
+            {
                 title: 'NumberField',
                 itemId: '/components/number-field',
                 keywords: ['number'],
@@ -171,6 +176,11 @@ const allMenuItems = [
             {
                 title: 'vkn',
                 itemId: '/validatable-form/vkn',
+            },
+            {
+                title: 'useComfortForm',
+                itemId: '/validatable-form/use-comfort-form',
+                keywords: ['useValidatableForm'],
             },
         ],
     },

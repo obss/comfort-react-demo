@@ -5,6 +5,7 @@ import Homepage from './Homepage';
 import CustomMessage from './validatable-form/CustomMessage';
 import CustomTranslations from './validatable-form/CustomTranslations';
 import Installation from './getting-started/Installation';
+import ApiComfortReactProvider from './api/ApiComfortReactProvider';
 import Home from './getting-started/Home';
 import RuleTckn from './rules/RuleTckn';
 import RulePhoneNumber from './rules/RulePhoneNumber';
@@ -29,14 +30,15 @@ import ComponentMenuButton from './components/ComponentMenuButton';
 import ListItemsExample from './examples/ListItemsExample';
 import ComponentShrinkableTransferList from './components/ComponentShrinkableTransferList';
 import ComponentDialog from './components/ComponentDialog';
+import Usage from './getting-started/Usage';
 import UseSnackbarApi from './use-snackbar/UseSnackbarApi';
 import UseApiApi from './use-api/UseApiApi';
-import Usage from './getting-started/Usage';
 import ComponentConfirmDialog from './components/ComponentConfirmDialog';
 import ComponentFormDialog from './components/ComponentFormDialog';
-import ApiComfortReactProvider from './api/ApiComfortReactProvider';
 import ComponentFileInput from './components/ComponentFileInput';
 import ComponentSwitch from './components/ComponentSwitch';
+import ComponentCheckList from './components/ComponentCheckList';
+import UseComfortForm from './validatable-form/UseComfortForm';
 
 const Routes = (props) => {
     return (
@@ -67,6 +69,9 @@ const Routes = (props) => {
                     </Route>
                     <Route exact path="/components/checkbox">
                         <ComponentCheckbox />
+                    </Route>
+                    <Route exact path="/components/check-list">
+                        <ComponentCheckList />
                     </Route>
                     <Route exact path="/components/number-field">
                         <ComponentNumberField />
@@ -130,6 +135,9 @@ const Routes = (props) => {
                     </Route>
                     <Route exact path="/validatable-form/translations">
                         <CustomTranslations />
+                    </Route>
+                    <Route exact path="/validatable-form/use-comfort-form">
+                        <UseComfortForm />
                     </Route>
                     <Route exact path="/notistack/use-snackbar">
                         <UseSnackbar />
