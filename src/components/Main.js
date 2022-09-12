@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { AppBar, Box, Dialog, DialogTitle, Divider, Toolbar, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -7,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import './Main.css';
 import BodyWrapper from './BodyWrapper';
-import Routes from './Routes';
+import AppRoutes from './AppRoutes';
 import ExampleUsageWrapper from './ExampleUsageWrapper';
 import Settings from './Settings';
 import { HashRouter, Link } from 'react-router-dom';
@@ -339,62 +340,64 @@ const Main = () => {
 
     return (
         <RTL isRtl={document.dir === 'rtl'}>
-            <HashRouter>
-                <div className={'obssTriangle'}>
-                    <a className={'triangleIcon'} href={'https://obss.tech/'} target={'_blank'} rel="noreferrer">
-                        <img src={process.env.PUBLIC_URL + '/obss.png'} alt={'obss'} />
-                    </a>
-                </div>
-                <Box flexGrow={1}>
-                    <AppBar color={'transparent'} position={'relative'}>
-                        <Toolbar>
-                            <IconButton onClick={handleMenuButton} className="menuButton">
-                                <MenuIcon />
-                            </IconButton>
-                            <Link to={'/'} className="bannerLink">
-                                <img
-                                    width={48}
-                                    className={'menuLogo'}
-                                    src={process.env.PUBLIC_URL + '/logo.png'}
-                                    alt={'logo'}
+            <HelmetProvider>
+                <HashRouter>
+                    <div className={'obssTriangle'}>
+                        <a className={'triangleIcon'} href={'https://obss.tech/'} target={'_blank'} rel="noreferrer">
+                            <img src={process.env.PUBLIC_URL + '/obss.png'} alt={'obss'} />
+                        </a>
+                    </div>
+                    <Box flexGrow={1}>
+                        <AppBar color={'transparent'} position={'relative'}>
+                            <Toolbar>
+                                <IconButton onClick={handleMenuButton} className="menuButton">
+                                    <MenuIcon />
+                                </IconButton>
+                                <Link to={'/'} className="bannerLink">
+                                    <img
+                                        width={48}
+                                        className={'menuLogo'}
+                                        src={process.env.PUBLIC_URL + '/logo.png'}
+                                        alt={'logo'}
+                                    />
+                                    <span className="bannerText">comfort-react</span>
+                                </Link>
+                                <Box flexGrow={1} />
+                                <Settings openSettingsDialog={openSettingsDialog} />
+                            </Toolbar>
+                        </AppBar>
+                    </Box>
+                    <MainDrawer anchor={anchor} open={anchor} toggleDrawer={toggleDrawer} />
+                    <ComfortReactProvider
+                        lang={currentSettings.lang}
+                        reactValidatableFormProps={reactValidatableFormProps}
+                        notistackProviderProps={notistackProviderProps}
+                        useApiProps={useApiProps}
+                        renderErrorMessage={customRenderErrorMessage}
+                    >
+                        <Dialog open={settingsDialogOpen} onClose={() => setSettingsDialogOpen(false)}>
+                            <DialogTitle>
+                                <ExampleUsageWrapper
+                                    header="Edit ComfortReactProvider Props"
+                                    codeUrl="components/Main.js"
+                                    wrapperClassName="modalHeaderWrapper"
                                 />
-                                <span className="bannerText">comfort-react</span>
-                            </Link>
-                            <Box flexGrow={1} />
-                            <Settings openSettingsDialog={openSettingsDialog} />
-                        </Toolbar>
-                    </AppBar>
-                </Box>
-                <MainDrawer anchor={anchor} open={anchor} toggleDrawer={toggleDrawer} />
-                <ComfortReactProvider
-                    lang={currentSettings.lang}
-                    reactValidatableFormProps={reactValidatableFormProps}
-                    notistackProviderProps={notistackProviderProps}
-                    useApiProps={useApiProps}
-                    renderErrorMessage={customRenderErrorMessage}
-                >
-                    <Dialog open={settingsDialogOpen} onClose={() => setSettingsDialogOpen(false)}>
-                        <DialogTitle>
-                            <ExampleUsageWrapper
-                                header="Edit ComfortReactProvider Props"
-                                codeUrl="components/Main.js"
-                                wrapperClassName="modalHeaderWrapper"
-                            />
-                        </DialogTitle>
-                        {dialogContent}
-                    </Dialog>
-                    <BodyWrapper>
-                        <div className="flex">
-                            <Routes
-                                openSettingsDialog={openSettingsDialog}
-                                menuIsHidden={menuIsHidden}
-                                onOutsideClick={handleOutsideClick}
-                                toggleDrawer={toggleDrawer}
-                            />
-                        </div>
-                    </BodyWrapper>
-                </ComfortReactProvider>
-            </HashRouter>
+                            </DialogTitle>
+                            {dialogContent}
+                        </Dialog>
+                        <BodyWrapper>
+                            <div className="flex">
+                                <AppRoutes
+                                    openSettingsDialog={openSettingsDialog}
+                                    menuIsHidden={menuIsHidden}
+                                    onOutsideClick={handleOutsideClick}
+                                    toggleDrawer={toggleDrawer}
+                                />
+                            </div>
+                        </BodyWrapper>
+                    </ComfortReactProvider>
+                </HashRouter>
+            </HelmetProvider>
         </RTL>
     );
 };

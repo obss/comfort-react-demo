@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      run: rm -rf node_modules && npm ci
+      run: rm -rf node_modules && yarn install --frozen-lockfile
     - run: npm run build
     - run: touch ./build/.nojekyll
     
