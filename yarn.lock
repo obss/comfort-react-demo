@@ -3353,11 +3353,12 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-comfort-react@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.16.0.tgz#80f35ec4e68653b8835715b70048d31e40d53c7d"
-  integrity sha512-njx2UVVZKLM/OEx17lLGIEiJ/IxVXYvSq7GkrpQNEFBtOSM4vn7myF7yxZc5ZjHuO/C4zdOBXG0i3AYW48QyIw==
+comfort-react@1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.17.0.tgz#365a3e900249c3b78353fed07bd9bdc28b1ca1d6"
+  integrity sha512-epf6uzP92VLm6MJIxeUXEHh6XjII34aiEW2U6fa77VyfpkbAmJAbQNUkdEn0VPGjoevqOf931iXdqiqelgTYPg==
   dependencies:
+    libphonenumber-js "1.9.34"
     notistack "2.0.5"
     numeral "2.0.6"
     prop-types "15.8.1"
@@ -6312,6 +6313,11 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libphonenumber-js@1.9.34:
+  version "1.9.34"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.9.34.tgz#ddddc778a9b2f53c70500fcf10c9483596e3574f"
+  integrity sha512-gHTNU9xTtVgSp30IDX/57W4pETMXDIYXFfwEOJVXiYosiY7Hc7ogJwlBjOqlCcU04X0aA8DT57hdwUC1sJBJnA==
 
 lilconfig@^2.0.3, lilconfig@^2.0.5, lilconfig@^2.0.6:
   version "2.0.6"
