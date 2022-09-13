@@ -3353,10 +3353,10 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-comfort-react@1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.15.2.tgz#9e9b7f2a744c4e3c430dfb4b40da465c833ad5ea"
-  integrity sha512-8Sug10UHXCUvAa+n9PwwC0IHRFXPPYDelpcEBWz4c0R7bXeSIX+gq0plGFUKQyw8HfQ8wjxu2qDnoki8+0trmg==
+comfort-react@1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.16.0.tgz#80f35ec4e68653b8835715b70048d31e40d53c7d"
+  integrity sha512-njx2UVVZKLM/OEx17lLGIEiJ/IxVXYvSq7GkrpQNEFBtOSM4vn7myF7yxZc5ZjHuO/C4zdOBXG0i3AYW48QyIw==
   dependencies:
     notistack "2.0.5"
     numeral "2.0.6"

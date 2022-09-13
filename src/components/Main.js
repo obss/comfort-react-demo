@@ -15,6 +15,7 @@ import { HashRouter, Link } from 'react-router-dom';
 import MainDrawer from './MainDrawer';
 import { Autocomplete, ComfortReactProvider } from 'comfort-react';
 import RTL from './RTL';
+import 'react-phone-input-2/lib/material.css';
 
 const MyCustomRuleFunction = (ruleParams) => {
     const { value } = ruleParams;
