@@ -3364,10 +3364,10 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-comfort-react@1.19.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.19.0.tgz#597cafc3e3fc2e4a507d78222ef3ffe36a5a56ba"
-  integrity sha512-Eh+uVqC3NNEW59+U++MGtn6acdzqrVvDepgnu4BqOV7XerYqdBSHyp584roya4HM4Xr135BlhQcxtBSBUOs+jQ==
+comfort-react@1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/comfort-react/-/comfort-react-1.20.0.tgz#0180b0676c7a6c46f2f67dc6e259b4904783168d"
+  integrity sha512-90599kaPAjRJRSRNGC/t8tgJkhLGGmNjmg0qlLPw22ptGWSzAWixronBecubAXa8zxn5sBVmh+mnI3ycJRpJBw==
   dependencies:
     libphonenumber-js "1.10.13"
     notistack "2.0.5"
