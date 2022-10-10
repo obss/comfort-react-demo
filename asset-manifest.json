@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/comfort-react-demo/static/css/main.09d54227.css",
-    "main.js": "/comfort-react-demo/static/js/main.dee1b2d5.js",
+    "main.js": "/comfort-react-demo/static/js/main.116baaeb.js",
     "static/js/496.9821aefd.chunk.js": "/comfort-react-demo/static/js/496.9821aefd.chunk.js",
     "index.html": "/comfort-react-demo/index.html",
     "main.09d54227.css.map": "/comfort-react-demo/static/css/main.09d54227.css.map",
-    "main.dee1b2d5.js.map": "/comfort-react-demo/static/js/main.dee1b2d5.js.map",
+    "main.116baaeb.js.map": "/comfort-react-demo/static/js/main.116baaeb.js.map",
     "496.9821aefd.chunk.js.map": "/comfort-react-demo/static/js/496.9821aefd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.09d54227.css",
-    "static/js/main.dee1b2d5.js"
+    "static/js/main.116baaeb.js"
   ]
 }
