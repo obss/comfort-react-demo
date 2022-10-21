@@ -1,6 +1,6 @@
 {
     "name": "comfort-react-demo",
-    "version": "2.6.0",
+    "version": "2.7.0",
     "private": false,
     "homepage": "http://obss.github.io/comfort-react-demo",
     "license": "MIT",
@@ -27,7 +27,7 @@
         "@mui/material": "5.10.9",
         "@mui/utils": "5.10.9",
         "@mui/x-date-pickers": "5.0.4",
-        "comfort-react": "2.6.0",
+        "comfort-react": "2.7.0",
         "date-fns": "2.29.3",
         "jsx-to-string": "1.4.0",
         "miragejs": "0.1.45",
