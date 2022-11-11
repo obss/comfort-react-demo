@@ -24,6 +24,9 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'yarn'
+            - name: Update yarn @v2
+              run: corepack enable
+            - run: corepack prepare yarn@stable --activate
             - name: Install dependencies
               run: rm -rf node_modules && yarn install --immutable
             - run: npm run build
