@@ -5170,7 +5170,7 @@ __metadata:
     "@mui/material": 5.10.9
     "@mui/utils": 5.10.9
     "@mui/x-date-pickers": 5.0.4
-    comfort-react: 3.1.0
+    comfort-react: 3.2.0
     date-fns: 2.29.3
     eslint: 8.23.1
     eslint-config-prettier: 8.5.0
@@ -5196,9 +5196,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"comfort-react@npm:3.1.0":
-  version: 3.1.0
-  resolution: "comfort-react@npm:3.1.0"
+"comfort-react@npm:3.2.0":
+  version: 3.2.0
+  resolution: "comfort-react@npm:3.2.0"
   dependencies:
     libphonenumber-js: 1.10.14
     notistack: 2.0.5
@@ -5224,7 +5224,7 @@ __metadata:
     react-dropzone: 14.2.3
     react-imask: 6.4.3
     react-phone-input-2: 2.15.1
-  checksum: 6714df9d0cccb830c321be4e6d21b04264619dc439a995f7283072b50f0567234e77b6c341223586ccd0414e22df05edb02982e9131a0d24e6487ffd1f0c5999
+  checksum: 859e52868577b953899a6e9fc93e2d9c13c818e1113e156a105fe97c35f10f18316f6559b8d06e42156844be14524dbd6433369349ce58afc206de9b6e8601c5
   languageName: node
   linkType: hard
 
