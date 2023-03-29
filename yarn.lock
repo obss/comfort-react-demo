@@ -5170,7 +5170,7 @@ __metadata:
     "@mui/material": 5.10.9
     "@mui/utils": 5.10.9
     "@mui/x-date-pickers": 5.0.4
-    comfort-react: 3.2.1
+    comfort-react: 3.2.2
     date-fns: 2.29.3
     eslint: 8.23.1
     eslint-config-prettier: 8.5.0
@@ -5196,16 +5196,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"comfort-react@npm:3.2.1":
-  version: 3.2.1
-  resolution: "comfort-react@npm:3.2.1"
+"comfort-react@npm:3.2.2":
+  version: 3.2.2
+  resolution: "comfort-react@npm:3.2.2"
   dependencies:
     libphonenumber-js: 1.10.14
     notistack: 2.0.5
     numeral: 2.0.6
     prop-types: 15.8.1
     react-number-format: 5.0.0
-    react-validatable-form: 4.0.0
+    react-validatable-form: 4.0.1
     stylis: 4.1.2
     stylis-plugin-rtl: 2.1.1
     with-query: 1.3.0
@@ -5224,7 +5224,7 @@ __metadata:
     react-dropzone: 14.2.3
     react-imask: 6.4.3
     react-phone-input-2: 2.15.1
-  checksum: 05c2023d180311e259e97cc002b6dd459bad291089b03a2b20150d2cc29aebfa0b9006a38ca39b051b79fe34bf54782f53a9f47ff55342e42b985ec4ed859124
+  checksum: fd5874be6663540f810eff336e5ab421fc4cf0590c9add771c0eef4ff1e6bd8b31839d84ea189730d47c9449bb35bb692aab23981c7b21f3a61bfeaf6229e24b
   languageName: node
   linkType: hard
 
@@ -11869,9 +11869,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-validatable-form@npm:4.0.0":
-  version: 4.0.0
-  resolution: "react-validatable-form@npm:4.0.0"
+"react-validatable-form@npm:4.0.1":
+  version: 4.0.1
+  resolution: "react-validatable-form@npm:4.0.1"
   dependencies:
     lodash.get: 4.4.2
     lodash.set: 4.3.2
@@ -11879,7 +11879,7 @@ __metadata:
   peerDependencies:
     react: ">=17.0.2"
     react-dom: ">=17.0.2"
-  checksum: 9caf1b8f51c3cf5145887ef8c8124644cb3c438ab2c63ff04c748f08e3bdb230727c7e08f1055cb66620e4e7fb25bdf46ebe63aff415abdaa2ea38f9f8a40afb
+  checksum: 6dbd17144bcc74dd88739ffedb8435e233cdc56f97919e588af9fed0598662ca586edf1538ce4d126dfd2d8c0f06341459709296285b0296122e44c8061301f7
   languageName: node
   linkType: hard
 
