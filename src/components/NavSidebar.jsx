@@ -68,6 +68,11 @@ const allMenuItems = [
                 keywords: ['checkbox'],
             },
             {
+                title: 'CheckList',
+                itemId: '/components/check-list',
+                keywords: ['checklist'],
+            },
+            {
                 title: 'NumberField',
                 itemId: '/components/number-field',
                 keywords: ['number'],
@@ -118,8 +123,8 @@ const allMenuItems = [
                 keywords: ['phone', 'telephone'],
             },
             {
-                title: 'Table',
-                itemId: '/components/table',
+                title: 'DataGrid',
+                itemId: '/components/data-grid',
                 keywords: ['table', 'datagrid'],
             },
             {
@@ -159,6 +164,7 @@ const allMenuItems = [
             {
                 title: 'tckn',
                 itemId: '/validatable-form/tckn',
+                keywords: ['tc kimlik no'],
             },
             {
                 title: 'phoneNumber',
@@ -171,6 +177,12 @@ const allMenuItems = [
             {
                 title: 'vkn',
                 itemId: '/validatable-form/vkn',
+                keywords: ['vergi kimlik no'],
+            },
+            {
+                title: 'useComfortForm',
+                itemId: '/validatable-form/use-comfort-form',
+                keywords: ['useValidatableForm'],
             },
         ],
     },
@@ -292,8 +304,7 @@ export const NavSidebar = ({ menuIsHidden, toggleDrawer }) => {
             let searchInputUpper = searchInput.toUpperCase();
             if (m.subNav && m.subNav.length > 0) {
                 let subsList = [];
-                for (let i = 0; i < m.subNav.length; i++) {
-                    const subEl = m.subNav[i];
+                for (const subEl of m.subNav) {
                     const keywords = subEl.keywords || [];
                     if (
                         subEl.title.toUpperCase().includes(searchInputUpper) ||

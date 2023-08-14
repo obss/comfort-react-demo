@@ -1,129 +1,170 @@
-import { Autocomplete, Checkbox, MaskField, TextField, useSnackbar, useValidatableForm } from 'comfort-react';
-import { IMask } from 'react-imask';
+import { Autocomplete, Checkbox, TextField, CheckList, useValidatableForm } from 'comfort-react';
 import { Grid } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
 import ExampleUsageWrapper from '../ExampleUsageWrapper';
 import { useState } from 'react';
 import jsxToString from 'jsx-to-string';
+import { complexOptions, options } from '../../constants/Data';
 import CurrentRulesInfo from '../CurrentRulesInfo';
+import { pink } from '@mui/material/colors';
+import './ComponentRadioButton.css';
 import CurrentComponentApiInfo from '../CurrentComponentApiInfo';
 import { customErrorMessageRenderer } from './CustomErrorMessageRenderer';
 import { customErrorMessageJsx } from '../../constants/JsxConstants';
 
-const VARIANT_OPTIONS = ['outlined', 'filled', 'standard'];
-const MASK_TYPE = ['date', 'credit card', 'cost (regex)', 'custom mask'];
-const INPUT_STYLE = { color: 'red' };
-const PLACEHOLDER_TEXT = 'placeholder';
+const CHECKBOX_SIZE = ['medium', 'large', 'small'];
+const LABEL_OPTIONS = ['label', 'id', 'description'];
+const CUSTOM_THEME = {
+    color: pink[800],
+    '&.Mui-checked': {
+        color: pink[600],
+    },
+};
 
-const rules = [{ path: 'val', ruleSet: [{ rule: 'required' }] }];
+const rules = [
+    { path: 'valSimple', ruleSet: [{ rule: 'required' }] },
+    { path: 'valComplex', ruleSet: [{ rule: 'required' }] },
+];
 
-const ComponentMaskField = () => {
-    const { enqueueSnackbar } = useSnackbar();
-    const [value, setValue] = useState('1999-02-04');
-    const [selectedVariant, setSelectedVariant] = useState(VARIANT_OPTIONS[0]);
-    const [selectedMaskType, setSelectedMaskType] = useState(MASK_TYPE[0]);
+const ComponentCheckList = () => {
+    const [simpleValue, setSimpleValue] = useState([options[0]]);
+    const [complexValue, setComplexValue] = useState([complexOptions[1].id]);
+    const [selectedCheckBoxSize, setSelectedCheckBoxSize] = useState(CHECKBOX_SIZE[0]);
+    const [selectedLabelOptions, setSelectedLabelOptions] = useState(LABEL_OPTIONS[0]);
     const [selectedDisabled, setSelectedDisabled] = useState(false);
     const [selectedFullWidth, setSelectedFullWidth] = useState(false);
-    const [selectedBlur, setSelectedBlur] = useState(false);
-    const [selectedInputStyle, setSelectedInputStyle] = useState(false);
-    const [selectedPlaceholder, setSelectedPlaceholder] = useState(false);
+    const [selectedCustomTheme, setSelectedCustomTheme] = useState(false);
+    const [selectedEnableClassName, setSelectedEnableClassName] = useState(false);
+    const [selectedSortAlphabetically, setSelectedSortAlphabetically] = useState(false);
     const [errorMessage, setErrorMessage] = useState();
     const [selectedRenderErrorMessage, setSelectedRenderErrorMessage] = useState(false);
     const [enableUseValidatableForm, setEnableUseValidatableForm] = useState(false);
-    const [selectedFocusedLabel, setSelectedFocusedLabel] = useState(false);
+    const [selectedGetOptionDisabled, setSelectedGetOptionDisabled] = useState(false);
+
     const { setPathValue, setPathIsBlurred, getValue, getError } = useValidatableForm({
         rules,
     });
 
-    const handleChange = (newValue) => {
-        setValue(newValue);
+    const handleSimpleSingleChange = (newValue) => {
+        setSimpleValue(newValue);
     };
 
-    const handleBlur = () => {
-        enqueueSnackbar('MaskField is blurred', { variant: 'info' });
+    const handleComplexSingleChange = (newValue) => {
+        setComplexValue(newValue);
     };
 
-    const maskFieldElementJsx = (
-        <MaskField
-            label="MaskField"
-            path="val"
-            placeholder={selectedPlaceholder ? PLACEHOLDER_TEXT : null}
-            value={!enableUseValidatableForm ? value : getValue('val')}
-            onChange={!enableUseValidatableForm ? handleChange : null}
-            onBlur={selectedBlur ? (!enableUseValidatableForm ? handleBlur : null) : null}
-            errorMessage={enableUseValidatableForm ? getError('val') : errorMessage}
+    const simpleGetOptionDisabled = (option) => option === 'Antarctica';
+    const complexGetOptionDisabled = (option) => option.label === 'Antarctica';
+
+    const checkListSimpleSingleElementJsx = (
+        <CheckList
+            className={selectedEnableClassName ? 'exampleStyle' : ''}
+            label="CheckList simple"
+            path="valSimple"
+            value={!enableUseValidatableForm ? simpleValue : getValue('valSimple')}
+            onChange={!enableUseValidatableForm ? handleSimpleSingleChange : null}
+            errorMessage={enableUseValidatableForm ? getError('valSimple') : errorMessage}
             setPathValue={enableUseValidatableForm ? setPathValue : null}
             setPathIsBlurred={enableUseValidatableForm ? setPathIsBlurred : null}
-            variant={selectedVariant}
+            options={options}
             disabled={selectedDisabled}
             fullWidth={selectedFullWidth}
-            InputProps={{
-                style: selectedInputStyle ? INPUT_STYLE : null,
-            }}
-            maskFormat={
-                selectedMaskType === 'date'
-                    ? 'YYYY-MM-DD'
-                    : selectedMaskType === 'credit card'
-                    ? '0000 0000 0000 0000'
-                    : selectedMaskType === 'cost (regex)'
-                    ? /^\$?\d+(,\d{3})*\.?[0-9]?[0-9]?$/
-                    : selectedMaskType === 'custom mask'
-                    ? '000 000.0000-0000'
-                    : null
-            }
-            blocks={{
-                YYYY: {
-                    mask: IMask.MaskedRange,
-                    from: 1900,
-                    to: 2199,
-                },
-                MM: {
-                    mask: IMask.MaskedRange,
-                    from: 1,
-                    to: 12,
-                },
-                DD: {
-                    mask: IMask.MaskedRange,
-                    from: 1,
-                    to: 31,
-                },
+            sortAlphabetically={selectedSortAlphabetically}
+            checkboxProps={{
+                sx: selectedCustomTheme ? CUSTOM_THEME : null,
+                size: selectedCheckBoxSize ? selectedCheckBoxSize : 'medium',
             }}
             renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
-            focusedLabel={selectedFocusedLabel ? 'Focused MaskField' : null}
+            getOptionDisabled={selectedGetOptionDisabled ? simpleGetOptionDisabled : null}
         />
     );
 
-    let currentJsx = jsxToString(maskFieldElementJsx, {
-        displayName: 'MaskField',
+    const checkListComplexSingleElementJsx = (
+        <CheckList
+            className={selectedEnableClassName ? 'exampleStyle' : ''}
+            label="CheckList complex"
+            path="valComplex"
+            value={!enableUseValidatableForm ? complexValue : getValue('valComplex')}
+            onChange={!enableUseValidatableForm ? handleComplexSingleChange : null}
+            errorMessage={enableUseValidatableForm ? getError('valComplex') : errorMessage}
+            setPathValue={enableUseValidatableForm ? setPathValue : null}
+            setPathIsBlurred={enableUseValidatableForm ? setPathIsBlurred : null}
+            options={complexOptions}
+            valueKey="id"
+            disabled={selectedDisabled}
+            fullWidth={selectedFullWidth}
+            sortAlphabetically={selectedSortAlphabetically}
+            getOptionLabel={(option) => {
+                if (selectedLabelOptions === 'label') {
+                    return option.label;
+                } else if (selectedLabelOptions === 'id') {
+                    return option.id;
+                } else if (selectedLabelOptions === 'description') {
+                    return option.description;
+                } else {
+                    return option.label;
+                }
+            }}
+            checkboxProps={{
+                sx: selectedCustomTheme ? CUSTOM_THEME : null,
+                size: selectedCheckBoxSize ? selectedCheckBoxSize : 'medium',
+            }}
+            renderErrorMessage={selectedRenderErrorMessage ? customErrorMessageRenderer : undefined}
+            getOptionDisabled={selectedGetOptionDisabled ? complexGetOptionDisabled : null}
+        />
+    );
+
+    const checkListElementJsx = (
+        <Grid container spacing={2} marginTop={2}>
+            <Grid item xs={12} sm={6}>
+                {checkListSimpleSingleElementJsx}
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                {checkListComplexSingleElementJsx}
+            </Grid>
+        </Grid>
+    );
+
+    let currentJsx = jsxToString(checkListSimpleSingleElementJsx, {
+        displayName: 'CheckList',
         useFunctionCode: true,
         keyValueOverride: {
             renderErrorMessage: selectedRenderErrorMessage ? customErrorMessageJsx : undefined,
         },
     });
-    currentJsx = "import { MaskField } from 'comfort-react';\n\n" + currentJsx;
+    currentJsx +=
+        '\n\n' +
+        jsxToString(checkListComplexSingleElementJsx, {
+            displayName: 'CheckList',
+            useFunctionCode: true,
+            keyValueOverride: {
+                renderErrorMessage: selectedRenderErrorMessage ? customErrorMessageJsx : undefined,
+            },
+        });
+    currentJsx = "import { CheckList } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="MaskField" codeUrl={'components/components/ComponentMaskField.js'}>
-            {maskFieldElementJsx}
+        <ExampleUsageWrapper header="CheckList" codeUrl={'components/components/ComponentCheckList.js'}>
+            {checkListElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>
                     <Autocomplete
-                        value={selectedVariant}
-                        options={VARIANT_OPTIONS}
+                        value={selectedCheckBoxSize}
+                        options={CHECKBOX_SIZE}
                         onChange={(val) => {
-                            setSelectedVariant(val);
+                            setSelectedCheckBoxSize(val);
                         }}
-                        label={'variant'}
+                        label={'checkbox size'}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Autocomplete
-                        value={selectedMaskType}
-                        options={MASK_TYPE}
+                        value={selectedLabelOptions}
+                        options={LABEL_OPTIONS}
                         onChange={(val) => {
-                            setSelectedMaskType(val);
+                            setSelectedLabelOptions(val);
                         }}
-                        label={'mask type'}
+                        label={'getOptionLabel'}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -151,10 +192,10 @@ const ComponentMaskField = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'enable input style'}
-                            value={selectedInputStyle}
+                            label={'custom theme'}
+                            value={selectedCustomTheme}
                             onChange={(newValue) => {
-                                setSelectedInputStyle(newValue);
+                                setSelectedCustomTheme(newValue);
                             }}
                         />
                     </FormGroup>
@@ -162,10 +203,10 @@ const ComponentMaskField = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'blur'}
-                            value={selectedBlur}
+                            label={'enable classname style'}
+                            value={selectedEnableClassName}
                             onChange={(newValue) => {
-                                setSelectedBlur(newValue);
+                                setSelectedEnableClassName(newValue);
                             }}
                         />
                     </FormGroup>
@@ -173,10 +214,10 @@ const ComponentMaskField = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'placeholder'}
-                            value={selectedPlaceholder}
+                            label={'sortAlphabetically'}
+                            value={selectedSortAlphabetically}
                             onChange={(newValue) => {
-                                setSelectedPlaceholder(newValue);
+                                setSelectedSortAlphabetically(newValue);
                             }}
                         />
                     </FormGroup>
@@ -215,10 +256,10 @@ const ComponentMaskField = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'enable focusedLabel'}
-                            value={selectedFocusedLabel}
+                            label={'getOptionDisabled'}
+                            value={selectedGetOptionDisabled}
                             onChange={(newValue) => {
-                                setSelectedFocusedLabel(newValue);
+                                setSelectedGetOptionDisabled(newValue);
                             }}
                         />
                     </FormGroup>
@@ -226,37 +267,31 @@ const ComponentMaskField = () => {
             </Grid>
             <CurrentRulesInfo currentRules={currentJsx} dontStringify={true} header="Current Jsx" />
             <CurrentComponentApiInfo
-                currentApiInfo={MaskFieldApiInfo}
-                currentApiLinks={'https://imask.js.org/guide.html'}
-                header={'MaskField'}
+                currentApiInfo={CheckListApiInfo}
+                currentApiLinks={'https://mui.com/material-ui/api/radio/#main-content'}
+                header={'CheckList'}
             />
         </ExampleUsageWrapper>
     );
 };
 
-export default ComponentMaskField;
+export default ComponentCheckList;
 
-const MaskFieldApiInfo = [
+const CheckListApiInfo = [
     {
         name: 'id',
-        type: 'string',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'path',
-        type: 'string',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'label',
         type: 'String',
         defaultValue: '',
         description: '',
     },
     {
-        name: 'focusedLabel',
+        name: 'path',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'label',
         type: 'String',
         defaultValue: '',
         description: '',
@@ -274,9 +309,15 @@ const MaskFieldApiInfo = [
         description: '',
     },
     {
-        name: 'setPathValue',
-        type: 'Func',
+        name: 'valueKey',
+        type: 'String',
         defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'options',
+        type: 'Array',
+        defaultValue: '[]',
         description: '',
     },
     {
@@ -286,9 +327,21 @@ const MaskFieldApiInfo = [
         description: '',
     },
     {
+        name: 'setPathValue',
+        type: 'Func',
+        defaultValue: '',
+        description: '',
+    },
+    {
         name: 'setPathIsBlurred',
         type: 'Func',
         defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'sortAlphabetically',
+        type: 'Bool',
+        defaultValue: 'false',
         description: '',
     },
     {
@@ -304,55 +357,55 @@ const MaskFieldApiInfo = [
         description: '',
     },
     {
-        name: 'onKeyUp',
+        name: 'getOptionLabel',
         type: 'Func',
-        defaultValue: '',
+        defaultValue: '(option) => option.label',
         description: '',
     },
     {
-        name: 'onEnterPressed',
-        type: 'Func',
-        defaultValue: '',
+        name: 'row',
+        type: 'Bool',
+        defaultValue: 'false',
         description: '',
     },
     {
         name: 'noHelperText',
+        type: 'bool',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'fullWidth',
         type: 'Bool',
         defaultValue: '',
         description: '',
     },
     {
-        name: 'multiline',
+        name: 'containerClass',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'labelClassName',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'disabled',
         type: 'Bool',
-        defaultValue: '',
+        defaultValue: 'false',
         description: '',
     },
     {
-        name: 'variant',
-        type: 'String',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'type',
-        type: 'String',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'maskFormat',
-        type: 'String (Required)',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'definitions',
+        name: 'checkbox',
         type: 'Object',
         defaultValue: '',
         description: '',
     },
     {
-        name: 'Blocks',
+        name: 'labelProps',
         type: 'Object',
         defaultValue: '',
         description: '',
@@ -364,14 +417,8 @@ const MaskFieldApiInfo = [
         description: '',
     },
     {
-        name: 'InputComponenet',
-        type: 'Object',
-        defaultValue: '',
-        description: '',
-    },
-    {
-        name: 'InputProps',
-        type: 'Object',
+        name: 'getOptionDisabled',
+        type: 'Func',
         defaultValue: '',
         description: '',
     },

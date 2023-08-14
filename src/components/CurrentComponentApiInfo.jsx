@@ -3,7 +3,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import './CurrentComponentApiInfo.css';
-import { Table } from 'comfort-react';
+import { DataGrid } from 'comfort-react';
 
 const definitions = [
     {
@@ -36,32 +36,68 @@ const definitions = [
     },
 ];
 
-const CurrentComponentInfo = ({ currentApiInfo, currentApiLinks: currentApiLink, header }) => {
+const CurrentComponentInfo = ({
+    currentApiInfo,
+    currentApiLinks: currentApiLink,
+    header,
+    extraApiInfo,
+    extraApiInfoHeader,
+}) => {
     return (
-        <div className={'currentRuleInfoDiv'}>
-            <Accordion>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-                    <span className={'currentRuleLabel'}>{header}</span>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Table
-                        title={header}
-                        identifierKey={'name'}
-                        rows={currentApiInfo}
-                        totalRowCount={50}
-                        enablePagination={false}
-                        definitions={definitions}
-                    />
-                    {currentApiLink ? (
-                        <span className={'moreInformationLink'}>
-                            <a href={currentApiLink} target="_blank" rel="noreferrer">
-                                More Information{' '}
-                            </a>
-                        </span>
-                    ) : null}
-                </AccordionDetails>
-            </Accordion>
-        </div>
+        <>
+            <div className={'currentRuleInfoDiv'}>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <span className={'currentRuleLabel'}>{header}</span>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <DataGrid
+                            title={header}
+                            identifierKey={'name'}
+                            rows={currentApiInfo}
+                            totalRowCount={50}
+                            enablePagination={false}
+                            definitions={definitions}
+                        />
+                        {currentApiLink ? (
+                            <span className={'moreInformationLink'}>
+                                <a href={currentApiLink} target="_blank" rel="noreferrer">
+                                    More Information{' '}
+                                </a>
+                            </span>
+                        ) : null}
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+
+            {extraApiInfo && extraApiInfo.length > 0 ? (
+                <div className={'currentRuleInfoDiv'}>
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <span className={'currentRuleLabel'}>{extraApiInfoHeader}</span>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <DataGrid
+                                title={extraApiInfoHeader}
+                                identifierKey={'name'}
+                                rows={extraApiInfo}
+                                totalRowCount={50}
+                                enablePagination={false}
+                                definitions={definitions}
+                            />
+                        </AccordionDetails>
+                    </Accordion>
+                </div>
+            ) : null}
+        </>
     );
 };
 

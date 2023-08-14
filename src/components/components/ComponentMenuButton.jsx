@@ -39,6 +39,7 @@ const ComponentMenuButton = () => {
     const [selectedIconButton, setSelectedIconButton] = useState(false);
     const [selectedLoading, setSelectedLoading] = useState(false);
     const [selectedClassname, setSelectedClassname] = useState(false);
+    const [selectedOpen, setSelectedOpen] = useState(undefined);
 
     let menuProps = {};
     if (selectedCustomTransition) {
@@ -90,6 +91,7 @@ const ComponentMenuButton = () => {
                 disabled: selectedDisabled,
                 loading: selectedLoading,
             }}
+            open={selectedOpen}
         >
             <FilterList />
         </MenuButton>
@@ -184,7 +186,7 @@ const ComponentMenuButton = () => {
                 <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <Checkbox
-                            label={'icon button'}
+                            label={'isIconButton'}
                             value={selectedIconButton}
                             onChange={(newValue) => {
                                 setSelectedIconButton(newValue);
@@ -210,6 +212,17 @@ const ComponentMenuButton = () => {
                             value={selectedLoading}
                             onChange={(newValue) => {
                                 setSelectedLoading(newValue);
+                            }}
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <Checkbox
+                            label={'open'}
+                            value={selectedOpen}
+                            onChange={(newValue) => {
+                                setSelectedOpen(newValue);
                             }}
                         />
                     </FormGroup>
@@ -261,6 +274,24 @@ const MenuButtonApiInfo = [
     {
         name: 'menuChildren',
         type: 'Node',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'onOpen',
+        type: 'Func',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'onClose',
+        type: 'Func',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'open',
+        type: 'Bool',
         defaultValue: '',
         description: '',
     },

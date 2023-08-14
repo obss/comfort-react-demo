@@ -1,4 +1,4 @@
-import { Autocomplete, NumberField, TextField, Checkbox, Table, useSnackbar, IconButton } from 'comfort-react';
+import { Autocomplete, NumberField, TextField, Checkbox, DataGrid, useSnackbar, IconButton } from 'comfort-react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Grid } from '@mui/material';
@@ -7,7 +7,7 @@ import ExampleUsageWrapper from '../ExampleUsageWrapper';
 import { useEffect, useState } from 'react';
 import jsxToString from 'jsx-to-string';
 import CurrentRulesInfo from '../CurrentRulesInfo';
-import './ComponentTable.css';
+import './ComponentDataGrid.css';
 import CurrentComponentApiInfo from '../CurrentComponentApiInfo';
 
 function createData(id, name, calories, fat, carbs, protein) {
@@ -45,7 +45,13 @@ const definitions = [
         padding: 'normal',
         header: 'Not Filterable Column',
         sortable: true,
-        notFilterable: true,
+        preventToBeHidden: true,
+        filterContent: (
+            <div>
+                <TextField noHelperText style={{ width: '200px' }} />
+            </div>
+        ),
+        filterIconPosition: 'right',
     },
     {
         key: 'defaultHidden',
@@ -65,6 +71,11 @@ const definitions = [
         padding: 'normal',
         header: 'Fat (g)',
         renderCell: (row, key) => <b>{`${row[key]} g`}</b>,
+        filterContent: (
+            <div>
+                <TextField noHelperText style={{ width: '200px' }} />
+            </div>
+        ),
     },
     {
         key: 'carbs',
@@ -79,6 +90,11 @@ const definitions = [
         header: <b>Protein (g)</b>,
         sortable: true,
         filterTitle: 'Protein (g)',
+        filterContent: (
+            <div>
+                <TextField noHelperText style={{ width: '200px' }} />
+            </div>
+        ),
     },
 ];
 
@@ -100,10 +116,10 @@ function getComparator(order, orderBy) {
         : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-const ComponentTable = () => {
+const ComponentDataGrid = () => {
     const { enqueueSnackbar } = useSnackbar();
     const [selected, setSelected] = useState([]);
-    const [selectedTitle, setSelectedTitle] = useState('My Awesome Table Title');
+    const [selectedTitle, setSelectedTitle] = useState('My Awesome DataGrid Title');
     const [selectedColumnFilteringTitle, setSelectedColumnFilteringTitle] = useState();
     const [selectedSize, setSelectedSize] = useState();
     const [selectedRowHeight, setSelectedRowHeight] = useState(73);
@@ -115,6 +131,7 @@ const ComponentTable = () => {
     const [selectedCellClick, setSelectedCellClick] = useState(false);
     const [selectedLoading, setSelectedLoading] = useState(false);
     const [selectedCustomLoading, setSelectedCustomLoading] = useState(false);
+    const [selectedCustomEmpty, setSelectedCustomEmpty] = useState(false);
     const [selectedClassName, setSelectedClassName] = useState(false);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -125,6 +142,7 @@ const ComponentTable = () => {
     const [fillEmptyRows, setFillEmptyRows] = useState(false);
     const [selectedGetRowProps, setSelectedGetRowProps] = useState(false);
     const [renderAsDiv, setRenderAsDiv] = useState(false);
+    const [empty, setEmpty] = useState(false);
 
     useEffect(() => {
         const definitionsWithButtons = [...definitions];
@@ -177,6 +195,7 @@ const ComponentTable = () => {
     const filteredRows = sortedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     const customLoadingComponent = <div className="custom-table-loading-component">Custom Loading Component</div>;
+    const customEmptyComponent = <div className="custom-table-loading-component">Custom Empty Component</div>;
 
     const getRowProps = selectedGetRowProps
         ? (row, rowIndex) => {
@@ -189,14 +208,14 @@ const ComponentTable = () => {
         : null;
 
     const tableElementJsx = (
-        <Table
+        <DataGrid
             identifierKey="id"
             page={page}
             rowsPerPage={rowsPerPage}
-            totalRowCount={data.length}
+            totalRowCount={empty ? 0 : data.length}
             onPageChange={setPage}
             onRowsPerPage={setRowsPerPage}
-            rows={filteredRows}
+            rows={empty ? [] : filteredRows}
             definitions={finalDefinitions}
             selected={selected}
             onSelectionChange={setSelected}
@@ -216,6 +235,7 @@ const ComponentTable = () => {
             onSortChange={handleSortChange}
             loading={selectedLoading}
             loadingComponent={selectedCustomLoading ? customLoadingComponent : undefined}
+            emptyComponent={selectedCustomEmpty ? customEmptyComponent : undefined}
             dontWrapWithPaper={dontWrapWithPaper}
             fillEmptyRows={fillEmptyRows}
             getRowProps={getRowProps}
@@ -224,16 +244,16 @@ const ComponentTable = () => {
     );
 
     let currentJsx = jsxToString(tableElementJsx, {
-        displayName: 'Table',
+        displayName: 'DataGrid',
         useFunctionCode: true,
         keyValueOverride: {
             toolbarRightContent: selectedToolbarRightContent ? '<DeleteIcon />' : null,
         },
     });
-    currentJsx = "import { Table } from 'comfort-react';\n\n" + currentJsx;
+    currentJsx = "import { DataGrid } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="Table" codeUrl={'components/components/ComponentTable.js'}>
+        <ExampleUsageWrapper header="DataGrid" codeUrl={'components/components/ComponentDataGrid.js'}>
             {tableElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>
@@ -431,20 +451,44 @@ const ComponentTable = () => {
                         />
                     </FormGroup>
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <Checkbox
+                            label={'empty'}
+                            value={empty}
+                            onChange={(newValue) => {
+                                setEmpty(newValue);
+                            }}
+                        />
+                    </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormGroup>
+                        <Checkbox
+                            label={'enable custom emptyComponent'}
+                            value={selectedCustomEmpty}
+                            onChange={(newValue) => {
+                                setSelectedCustomEmpty(newValue);
+                            }}
+                        />
+                    </FormGroup>
+                </Grid>
             </Grid>
             <CurrentRulesInfo currentRules={currentJsx} dontStringify={true} header="Current Jsx" />
             <CurrentComponentApiInfo
-                currentApiInfo={TableApiInfo}
+                currentApiInfo={DataGridApiInfo}
                 currentApiLinks={'https://mui.com/material-ui/react-table/#api'}
-                header={'Table'}
+                header={'DataGrid API'}
+                extraApiInfoHeader={'definitions API'}
+                extraApiInfo={DefinitionsApiInfo}
             />
         </ExampleUsageWrapper>
     );
 };
 
-export default ComponentTable;
+export default ComponentDataGrid;
 
-const TableApiInfo = [
+const DataGridApiInfo = [
     {
         name: 'rows',
         type: 'Array',
@@ -689,6 +733,135 @@ const TableApiInfo = [
         name: 'renderAsDiv',
         type: 'Bool',
         defaultValue: 'false',
+        description: '',
+    },
+    {
+        name: 'filterColumnsIcon',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'filterDataIcon',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'emptyComponent',
+        type: 'Node',
+        defaultValue: 'No data to display',
+        description: '',
+    },
+    {
+        name: 'loadingDivProps',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'emptyDivProps',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+];
+
+const DefinitionsApiInfo = [
+    {
+        name: 'key',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'align',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'padding',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'scope',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'component',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'renderCell',
+        type: 'Func',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'tableCellProps',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'sortable',
+        type: 'Bool',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'header',
+        type: 'String || Node',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'tableSortLabelProps',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'filterIconBoxClassName',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'filterIconBoxProps',
+        type: 'Object',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'filterContent',
+        type: 'Node',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'filterIconPosition',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'className',
+        type: 'String',
+        defaultValue: '',
+        description: '',
+    },
+    {
+        name: 'tableHeaderCellProps',
+        type: 'Object',
+        defaultValue: '',
         description: '',
     },
 ];
