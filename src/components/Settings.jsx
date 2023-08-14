@@ -5,7 +5,7 @@ import { SettingsOutlined } from '@mui/icons-material';
 
 const Settings = (props) => {
     const { openSettingsDialog } = props;
-    const versionInfo = `Version: ${import.meta.env.REACT_APP_VERSION}`;
+    const versionInfo = `Version: ${import.meta.env.VITE_REACT_APP_VERSION}`;
 
     return (
         <div className={'settings-div'}>
