@@ -342,7 +342,7 @@ const Main = () => {
             <HashRouter>
                 <div className={'obssTriangle'}>
                     <a className={'triangleIcon'} href={'https://obss.tech/'} target={'_blank'} rel="noreferrer">
-                        <img src={process.env.PUBLIC_URL + '/obss.png'} alt={'obss'} />
+                        <img src={'/obss.png'} alt={'obss'} />
                     </a>
                 </div>
                 <Box flexGrow={1}>
@@ -355,7 +355,7 @@ const Main = () => {
                                 <img
                                     width={48}
                                     className={'menuLogo'}
-                                    src={process.env.PUBLIC_URL + '/logo.png'}
+                                    src={'/logo.png'}
                                     alt={'logo'}
                                 />
                                 <span className="bannerText">comfort-react</span>
