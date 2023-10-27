@@ -6,4 +6,5 @@ export default defineConfig({
   plugins: [react({
     include: '**/*.{js,jsx,tsx}',
   })],
+  base: '/comfort-react-demo/'
 })
