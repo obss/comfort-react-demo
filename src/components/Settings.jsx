@@ -17,14 +17,14 @@ const Settings = (props) => {
             <Tooltip placement="bottom" title="View on GitHub">
                 <span className={'githubIcon'}>
                     <a href={'https://github.com/obss/comfort-react'} target="_blank" rel="noreferrer">
-                        <img src={'/github.png'} alt="github_icon" />
+                        <img src={import.meta.env.BASE_URL + 'github.png'} alt="github_icon" />
                     </a>
                 </span>
             </Tooltip>
             <Tooltip placement="bottom" title="View on npmjs">
                 <span className={'npmIcon'}>
                     <a href={'https://www.npmjs.com/package/comfort-react'} target="_blank" rel="noreferrer">
-                        <img src={'/npm.png'} alt="npm_icon" />
+                        <img src={import.meta.env.BASE_URL + 'npm.png'} alt="npm_icon" />
                     </a>
                 </span>
             </Tooltip>

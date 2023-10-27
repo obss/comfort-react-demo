@@ -1,7 +1,7 @@
 import './ValidationResult.css';
 
 const ValidationResult = ({ isValid }) => {
-    let imgSrc = '/';
+    let imgSrc = import.meta.env.BASE_URL;
     let validationResultText = '';
     if (isValid) {
         imgSrc += 'valid.png';
