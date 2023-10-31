@@ -78,7 +78,7 @@ const CustomMessage = () => {
     });
 
     return (
-        <ExampleUsageWrapper header="customMessage" codeUrl="components/validatable-form/CustomMessage.js">
+        <ExampleUsageWrapper header="customMessage" codeUrl="components/validatable-form/CustomMessage.jsx">
             <p className="infoParagraph">
                 Validation error message of a rule can be customized by passing <b>customMessage</b> param to the rule.
             </p>

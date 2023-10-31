@@ -20,7 +20,7 @@ const UseComfortForm = () => {
     });
 
     return (
-        <ExampleUsageWrapper header="useComfortForm" codeUrl="components/validatable-form/UseComfortForm.js">
+        <ExampleUsageWrapper header="useComfortForm" codeUrl="components/validatable-form/UseComfortForm.jsx">
             <p className="infoParagraph">
                 <b>useComfortForm</b> is a hook extended from{' '}
                 <a

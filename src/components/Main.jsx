@@ -380,7 +380,7 @@ const Main = () => {
                             <DialogTitle>
                                 <ExampleUsageWrapper
                                     header="Edit ComfortReactProvider Props"
-                                    codeUrl="components/Main.js"
+                                    codeUrl="components/Main.jsx"
                                     wrapperClassName="modalHeaderWrapper"
                                 />
                             </DialogTitle>

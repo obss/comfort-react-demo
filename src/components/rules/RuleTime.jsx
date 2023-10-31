@@ -56,7 +56,7 @@ const RuleTime = () => {
     };
 
     return (
-        <ExampleUsageWrapper header="time" codeUrl="components/rules/RuleTime.js">
+        <ExampleUsageWrapper header="time" codeUrl="components/rules/RuleTime.jsx">
             <p className="infoParagraph">
                 <b>time</b> rule checks if the given value is a valid time.
             </p>

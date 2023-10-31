@@ -203,7 +203,7 @@ const ComponentShrinkableTransferList = () => {
     return (
         <ExampleUsageWrapper
             header="ShrinkableTransferList"
-            codeUrl="components/components/ComponentShrinkableTransferList.js"
+            codeUrl="components/components/ComponentShrinkableTransferList.jsx"
         >
             {shrinkElementJsx}
             <Grid container spacing={2} marginTop={2}>

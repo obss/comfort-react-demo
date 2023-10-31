@@ -16,7 +16,7 @@ const RuleVkn = () => {
     });
 
     return (
-        <ExampleUsageWrapper header="vkn" codeUrl="components/rules/RuleVkn.js">
+        <ExampleUsageWrapper header="vkn" codeUrl="components/rules/RuleVkn.jsx">
             <p className="infoParagraph">
                 <b>vkn</b> rule checks if the given value is a valid vkn.
             </p>

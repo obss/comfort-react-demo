@@ -16,7 +16,7 @@ const RulePhoneNumber = () => {
     });
 
     return (
-        <ExampleUsageWrapper header="phoneNumber" codeUrl="components/rules/RulePhoneNumber.js">
+        <ExampleUsageWrapper header="phoneNumber" codeUrl="components/rules/RulePhoneNumber.jsx">
             <p className="infoParagraph">
                 <b>phoneNumber</b> rule checks if the given value is a valid phone number.
             </p>

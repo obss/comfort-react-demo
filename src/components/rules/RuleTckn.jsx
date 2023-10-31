@@ -16,7 +16,7 @@ const RuleTckn = () => {
     });
 
     return (
-        <ExampleUsageWrapper header="tckn" codeUrl="components/rules/RuleTckn.js">
+        <ExampleUsageWrapper header="tckn" codeUrl="components/rules/RuleTckn.jsx">
             <p className="infoParagraph">
                 <b>tckn</b> rule checks if the given value is a valid TCKN.
             </p>
