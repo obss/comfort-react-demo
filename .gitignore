@@ -37,6 +37,7 @@ dist-ssr
 
 # production
 /build
+/storybook-dist
 
 # misc
 .DS_Store

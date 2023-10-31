@@ -9,4 +9,7 @@ export default defineConfig({
         }),
     ],
     base: '/comfort-react-demo/',
+    build: {
+        outDir: 'storybook-dist',
+    },
 });

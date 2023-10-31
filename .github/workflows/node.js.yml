@@ -30,10 +30,10 @@ jobs:
             - name: Install dependencies
               run: rm -rf node_modules && yarn install --immutable
             - run: npm run build
-            - run: touch ./dist/.nojekyll
+            - run: touch ./storybook-dist/.nojekyll
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4.2.5
               with:
                   branch: gh-pages # The branch the action should deploy to.
-                  folder: dist # The folder the action should deploy.
+                  folder: storybook-dist # The folder the action should deploy.
