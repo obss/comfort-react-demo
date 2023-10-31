@@ -106,7 +106,7 @@ const ComponentDatePicker = () => {
     currentJsx = "import { DatePicker } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="DatePicker" codeUrl={'components/components/ComponentDatePicker.js'}>
+        <ExampleUsageWrapper header="DatePicker" codeUrl={'components/components/ComponentDatePicker.jsx'}>
             {datePickerElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

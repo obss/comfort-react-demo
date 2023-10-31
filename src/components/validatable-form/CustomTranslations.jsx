@@ -26,7 +26,7 @@ const CustomTranslations = () => {
     return (
         <ExampleUsageWrapper
             header="translations"
-            codeUrl={['components/validatable-form/CustomTranslations.js', 'components/Main.js']}
+            codeUrl={['components/validatable-form/CustomTranslations.jsx', 'components/Main.jsx']}
         >
             <p className="infoParagraph">
                 Validation error messages of any rules can be customized in app by passing <b>translations</b> inside of

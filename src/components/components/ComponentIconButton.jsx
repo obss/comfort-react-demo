@@ -48,7 +48,7 @@ const ComponentIconButton = () => {
     currentJsx = currentJsx.replace('<[object Object] />', '<SendOutlined />');
 
     return (
-        <ExampleUsageWrapper header="IconButton" codeUrl={'components/components/ComponentIconButton.js'}>
+        <ExampleUsageWrapper header="IconButton" codeUrl={'components/components/ComponentIconButton.jsx'}>
             {iconButtonElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

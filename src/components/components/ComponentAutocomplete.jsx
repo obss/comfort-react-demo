@@ -261,7 +261,7 @@ const ComponentAutocomplete = () => {
     currentJsx = "import { Autocomplete } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="Autocomplete" codeUrl={'components/components/ComponentAutocomplete.js'}>
+        <ExampleUsageWrapper header="Autocomplete" codeUrl={'components/components/ComponentAutocomplete.jsx'}>
             {autocompleteElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

@@ -12,7 +12,7 @@ const UseSnackbar = () => {
     return (
         <ExampleUsageWrapper
             header="useSnackbar"
-            codeUrl={['components/use-snackbar/UseSnackbar.js', 'components/Main.js']}
+            codeUrl={['components/use-snackbar/UseSnackbar.jsx', 'components/Main.jsx']}
         >
             <Stack spacing={2} direction={isMobile ? 'column' : 'row'}>
                 {variantList.map((variant) => {

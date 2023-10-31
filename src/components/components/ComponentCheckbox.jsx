@@ -80,7 +80,7 @@ const ComponentCheckbox = () => {
     currentJsx = "import { Checkbox } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="Checkbox" codeUrl={'components/components/ComponentCheckbox.js'}>
+        <ExampleUsageWrapper header="Checkbox" codeUrl={'components/components/ComponentCheckbox.jsx'}>
             {checkboxElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

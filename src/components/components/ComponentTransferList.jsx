@@ -163,7 +163,7 @@ const ComponentTransferList = () => {
     currentJsx = "import { TransferList } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="TransferList" codeUrl={'components/components/ComponentTransferList.js'}>
+        <ExampleUsageWrapper header="TransferList" codeUrl={'components/components/ComponentTransferList.jsx'}>
             {transferListElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

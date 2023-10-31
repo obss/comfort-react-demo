@@ -76,7 +76,7 @@ const ComponentNumberField = () => {
     currentJsx = "import { NumberField } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="NumberField" codeUrl={'components/components/ComponentNumberField.js'}>
+        <ExampleUsageWrapper header="NumberField" codeUrl={'components/components/ComponentNumberField.jsx'}>
             {numberFieldElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

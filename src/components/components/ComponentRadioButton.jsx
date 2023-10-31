@@ -155,7 +155,7 @@ const ComponentRadioButton = () => {
     currentJsx = "import { RadioButton } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="RadioButton" codeUrl={'components/components/ComponentRadioButton.js'}>
+        <ExampleUsageWrapper header="RadioButton" codeUrl={'components/components/ComponentRadioButton.jsx'}>
             {radioButtonElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

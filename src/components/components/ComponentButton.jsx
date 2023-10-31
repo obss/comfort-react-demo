@@ -93,7 +93,7 @@ const ComponentButton = () => {
     currentJsx = "import { Button } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="Button" codeUrl={'components/components/ComponentButton.js'}>
+        <ExampleUsageWrapper header="Button" codeUrl={'components/components/ComponentButton.jsx'}>
             {buttonElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

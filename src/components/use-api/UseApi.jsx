@@ -143,7 +143,7 @@ const UseApi = () => {
     bodyStr = bodyStr.replaceAll(':', ': ');
 
     return (
-        <ExampleUsageWrapper header="useApi" codeUrl={['components/use-api/UseApi.js', 'components/Main.js']}>
+        <ExampleUsageWrapper header="useApi" codeUrl={['components/use-api/UseApi.jsx', 'components/Main.jsx']}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <Checkbox

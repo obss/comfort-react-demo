@@ -72,7 +72,7 @@ const ComponentTimePicker = () => {
     currentJsx = "import { TimePicker } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="TimePicker" codeUrl={'components/components/ComponentTimePicker.js'}>
+        <ExampleUsageWrapper header="TimePicker" codeUrl={'components/components/ComponentTimePicker.jsx'}>
             {timePickerElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

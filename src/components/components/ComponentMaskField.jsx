@@ -103,7 +103,7 @@ const ComponentMaskField = () => {
     currentJsx = "import { MaskField } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="MaskField" codeUrl={'components/components/ComponentMaskField.js'}>
+        <ExampleUsageWrapper header="MaskField" codeUrl={'components/components/ComponentMaskField.jsx'}>
             {maskFieldElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

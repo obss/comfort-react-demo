@@ -118,7 +118,7 @@ const ComponentMenuButton = () => {
     currentJsx = currentJsx.replace('<[object Object] />', '<FilterList />');
 
     return (
-        <ExampleUsageWrapper header="MenuButton" codeUrl={'components/components/ComponentMenuButton.js'}>
+        <ExampleUsageWrapper header="MenuButton" codeUrl={'components/components/ComponentMenuButton.jsx'}>
             {menuButtonElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

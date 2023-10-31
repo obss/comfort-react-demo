@@ -93,7 +93,7 @@ const ComponentTextField = () => {
     currentJsx = "import { TextField } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="TextField" codeUrl={'components/components/ComponentTextField.js'}>
+        <ExampleUsageWrapper header="TextField" codeUrl={'components/components/ComponentTextField.jsx'}>
             {buttonElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

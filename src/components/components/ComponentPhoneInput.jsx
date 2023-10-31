@@ -67,7 +67,7 @@ const ComponentPhoneInput = () => {
     currentJsx = "import { PhoneInput } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="PhoneInput" codeUrl={'components/components/ComponentPhoneInput.js'}>
+        <ExampleUsageWrapper header="PhoneInput" codeUrl={'components/components/ComponentPhoneInput.jsx'}>
             {phoneInputElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

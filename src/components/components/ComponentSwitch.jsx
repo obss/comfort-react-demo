@@ -72,7 +72,7 @@ const ComponentSwitch = () => {
     currentJsx = "import { Switch } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="Switch" codeUrl={'components/components/ComponentSwitch.js'}>
+        <ExampleUsageWrapper header="Switch" codeUrl={'components/components/ComponentSwitch.jsx'}>
             {switchElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>

@@ -253,7 +253,7 @@ const ComponentDataGrid = () => {
     currentJsx = "import { DataGrid } from 'comfort-react';\n\n" + currentJsx;
 
     return (
-        <ExampleUsageWrapper header="DataGrid" codeUrl={'components/components/ComponentDataGrid.js'}>
+        <ExampleUsageWrapper header="DataGrid" codeUrl={'components/components/ComponentDataGrid.jsx'}>
             {tableElementJsx}
             <Grid container spacing={2} marginTop={2}>
                 <Grid item xs={12} sm={6}>
