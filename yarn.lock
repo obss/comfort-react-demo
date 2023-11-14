@@ -3313,7 +3313,7 @@ __metadata:
     "@mui/utils": "npm:5.14.16"
     "@mui/x-date-pickers": "npm:6.17.0"
     "@vitejs/plugin-react": "npm:4.1.0"
-    comfort-react: "npm:4.0.1"
+    comfort-react: "npm:4.0.2"
     date-fns: "npm:2.30.0"
     eslint: "npm:8.52.0"
     eslint-config-prettier: "npm:9.0.0"
@@ -3337,9 +3337,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"comfort-react@npm:4.0.1":
-  version: 4.0.1
-  resolution: "comfort-react@npm:4.0.1"
+"comfort-react@npm:4.0.2":
+  version: 4.0.2
+  resolution: "comfort-react@npm:4.0.2"
   dependencies:
     libphonenumber-js: "npm:1.10.49"
     notistack: "npm:3.0.1"
@@ -3363,7 +3363,7 @@ __metadata:
     react-dropzone: 14.2.3
     react-imask: 7.1.3
     react-phone-input-2: 2.15.1
-  checksum: 00875775043f571dc2abb29509e54031c127cb8dc235dc25d4ad3854ceca054ad7c4258a05dbfa9d514671dd27c72153ca1ccecd8f68f1c0a1b853358174a6cb
+  checksum: c35aa666e71f41bf9130bccb96818d0b950453d049ca1e6c26a11611c929a87c9de89ca6f9efb98d8b93275eb840db0ce3ff563b1a2d55ac5b5a9be3d42e5885
   languageName: node
   linkType: hard
 
