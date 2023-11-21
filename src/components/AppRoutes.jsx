@@ -25,7 +25,7 @@ import ComponentDatePicker from './components/ComponentDatePicker';
 import ComponentMaskField from './components/ComponentMaskField';
 import ComponentTimePicker from './components/ComponentTimePicker';
 import ComponentPhoneInput from './components/ComponentPhoneInput';
-import ComponentDataGrid from './components/ComponentTable';
+import ComponentDataGrid from './components/ComponentDataGrid';
 import ComponentMenuButton from './components/ComponentMenuButton';
 import ListItemsExample from './examples/ListItemsExample';
 import ComponentShrinkableTransferList from './components/ComponentShrinkableTransferList';
