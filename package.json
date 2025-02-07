@@ -1,6 +1,6 @@
 {
     "name": "comfort-react-demo",
-    "version": "4.2.1",
+    "version": "5.0.0",
     "type": "module",
     "license": "MIT",
     "scripts": {
@@ -22,7 +22,7 @@
         "@mui/x-date-pickers": "6.17.0",
         "@testing-library/jest-dom": "^6.2.1",
         "@testing-library/react": "^14.1.2",
-        "comfort-react": "4.2.1",
+        "comfort-react": "5.0.0",
         "date-fns": "2.30.0",
         "jsx-to-string": "1.4.0",
         "miragejs": "0.1.48",
